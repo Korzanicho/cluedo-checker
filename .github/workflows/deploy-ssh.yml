@@ -1,0 +1,34 @@
+name: Deploy to atthost server
+on:
+  push:
+    branches:
+      - "master"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_PATH: cluedo-checker
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Build Project
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+        run: |
+          npm install
+          npm run serve
+      - name: Deploy
+        uses: kostya-ten/ssh-server-deploy@v4
+        with:
+          host: ${{ secrets.ATTHOST_SHH_HOST }}
+          port: 6022
+          username: ${{ secrets.ATTHOST_SSH_USER }}
+          password: ${{ secrets.ATTHOST_SSH_PASSWORD }}
+          scp_source: ./dist
+          scp_target: ./websites/cluedo-checker
