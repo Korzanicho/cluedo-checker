@@ -17,12 +17,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
-      -  uses: actions/setup-node@v2
-         with:
+
+      - name: Node JS
+        uses: actions/setup-node@v2
+        with:
           node-version: '16'
 
-      - run: npm install
-      - run: npm run build
+      - name: NPM Install
+        run: npm install
+
+      - name: Build
+        run: npm run build
 
       - name: Deploy
         uses: kostya-ten/ssh-server-deploy@v4
@@ -31,5 +36,5 @@ jobs:
           port: 6022
           username: ${{ secrets.ATTHOST_SSH_USER }}
           password: ${{ secrets.ATTHOST_SSH_PASSWORD }}
-          scp_source: ./
+          scp_source: ./dist
           scp_target: ./websites/cluedo-checker
