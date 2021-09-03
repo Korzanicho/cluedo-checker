@@ -31,5 +31,5 @@ jobs:
           port: 6022
           username: ${{ secrets.ATTHOST_SSH_USER }}
           password: ${{ secrets.ATTHOST_SSH_PASSWORD }}
-          scp_source: ./dist
+          scp_source: ./
           scp_target: ./websites/cluedo-checker
