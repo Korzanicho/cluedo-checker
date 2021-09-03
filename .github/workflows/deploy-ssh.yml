@@ -18,8 +18,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+
+      - name: Build
         run: npm install
         run: npm run build
+
       - name: Deploy
         uses: kostya-ten/ssh-server-deploy@v4
         with:
