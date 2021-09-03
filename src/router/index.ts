@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import Settings from '../views/Settings.vue';
 import Game from '../views/Game.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
   },
   {
     path: '/about',
@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/game',
+    path: '/',
     name: 'Game',
     component: Game,
   },
