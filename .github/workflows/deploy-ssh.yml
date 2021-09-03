@@ -36,6 +36,7 @@ jobs:
           ARGS: "-rltgoDzvO"
           SOURCE: "dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{secrets.REMOTE_PORT}}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: '/websites/cluedo-checker'
           EXCLUDE: "/dist/, /node_modules/"
