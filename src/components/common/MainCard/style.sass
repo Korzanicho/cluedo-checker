@@ -1,0 +1,19 @@
+.MainCard
+	display: flex
+	flex-wrap: wrap
+	flex-basis: 28%
+	text-align: left
+	min-width: 230px
+	margin: 30px 10px
+	padding: 5px 20px
+	transition: all .3s
+	border-radius: 10px
+	border: 2px solid #9d2828
+	justify-content: space-between
+	background-image: linear-gradient(to bottom, #5555558c, #555555c2)
+	&:hover
+		box-shadow: 0 0 10px #8c1717
+
+@media (max-width: 768px)
+	.MainCard
+		flex-basis: 100%
