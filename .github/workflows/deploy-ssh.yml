@@ -9,9 +9,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    env:
-      BASE_PATH: cluedo-checker
-
     name: Build And Deploy
 
     steps:
