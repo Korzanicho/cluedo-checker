@@ -37,3 +37,9 @@ jobs:
           password: ${{ secrets.ATTHOST_SSH_PASSWORD }}
           scp_source: ./
           scp_target: ./websites/cluedo-checker
+          before_script: |
+            df -h
+            ls
+          after_script: |
+            whoami
+            ls
