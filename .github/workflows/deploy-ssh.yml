@@ -29,14 +29,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Staging server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_PORT: ${{secrets.REMOTE_PORT}}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: '/websites/cluedo-checker'
-          EXCLUDE: "/dist/, /node_modules/"
+      - name: Deploy
+        uses: kostya-ten/ssh-server-deploy@v4
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          port: 6022
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          scp_source: ./dist
+          scp_target: ./websites/cluedo-checker
